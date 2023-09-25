@@ -3,7 +3,7 @@ from typing import AsyncIterable, List
 
 import aiohttp
 
-from .sampling_params import SamplingParams
+from vllm_client.sampling_params import SamplingParams
 
 
 class AsyncVllmClient:
