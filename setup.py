@@ -39,15 +39,15 @@ def get_requirements() -> List[str]:
 setuptools.setup(
     name="vllm_client",
     version=find_version(get_path("vllm_client", "__init__.py")),
-    author="vLLM Team",
+    author="Viktor Ferenczi",
     license="Apache 2.0",
     description=("Client for the vLLM API with minimal dependencies"),
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/vllm-project/vllm",
+    url="https://github.com/viktor-ferenczi/vllm-client",
     project_urls={
-        "Homepage": "https://github.com/vllm-project/vllm",
-        "Documentation": "https://vllm.readthedocs.io/en/latest/",
+        "Homepage": "https://github.com/viktor-ferenczi/vllm-client",
+        "Documentation": "https://github.com/viktor-ferenczi/vllm-client",
     },
     classifiers=[
         "Programming Language :: Python :: 3.8",

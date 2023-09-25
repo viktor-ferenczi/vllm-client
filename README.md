@@ -2,7 +2,7 @@
 
 ## Overview
 
-Client for the vLLM API with minimal dependencies.
+Client for the [vLLM](https://github.com/vllm-project/vllm) API with minimal dependencies.
 
 ## Examples
 
@@ -11,8 +11,7 @@ See [example.py](example.py) for the following:
 - Streaming
 - Batch inference
 
-It should work out of the box with a vLLM API server 
-running a Llama-2 model (any parameter count). 
+It should work out of the box with a vLLM API server. 
 
 ## Notes
 
