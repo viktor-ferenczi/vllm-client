@@ -21,7 +21,7 @@ class AsyncVllmClient:
                 response.raise_for_status()
                 response = await response.json()
 
-        return response['text']
+        return response["text"]
 
     async def stream(self, prompt: str, params: SamplingParams) -> AsyncIterable[List[str]]:
         payload = {
@@ -33,7 +33,7 @@ class AsyncVllmClient:
             async with session.post(self.url, json=payload) as response:
                 content = response.content
                 while 1:
-                    item = await content.readuntil(b'\0')
+                    item = await content.readuntil(b"\0")
                     if not item:
                         break
-                    yield loads(item[:-1].decode('utf-8'))['text']
+                    yield loads(item[:-1].decode("utf-8"))["text"]

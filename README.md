@@ -15,5 +15,6 @@ It should work out of the box with a vLLM API server.
 
 ## Notes
 
-- `sampling_params.py` is a copy of the file with the same name
-  from the vLLM repository. It needs to be kept in sync.
+- `sampling_params.py` needs to be kept in sync with vLLM.
+  It is a simplified version of their class, containing
+  only the code required on client side.
