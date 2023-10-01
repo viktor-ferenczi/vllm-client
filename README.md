@@ -4,6 +4,12 @@
 
 Client for the [vLLM](https://github.com/vllm-project/vllm) API with minimal dependencies.
 
+## Installation
+
+```sh
+pip install vllm-client
+```
+
 ## Examples
 
 See [example.py](example.py) for the following:
