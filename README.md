@@ -24,3 +24,7 @@ It should work out of the box with a vLLM API server.
 - `sampling_params.py` needs to be kept in sync with vLLM.
   It is a simplified version of their class, containing
   only the code required on client side.
+
+## Another programming languages
+
+- C# [VllmClient NuGet package](https://www.nuget.org/packages/VllmClient/0.2.0)
