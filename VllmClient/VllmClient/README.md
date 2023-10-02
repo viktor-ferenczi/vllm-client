@@ -28,7 +28,7 @@ await foreach (var response in client.Stream(prompt, @params)) {
 }
 ```
 
-`*`[SamplingParams](https://github.com/vllm-project/vllm/blob/main/vllm/sampling_params.py)
+`*` [SamplingParams](https://github.com/vllm-project/vllm/blob/main/vllm/sampling_params.py)
 
 See also the unit tests in the repository as examples.
 
