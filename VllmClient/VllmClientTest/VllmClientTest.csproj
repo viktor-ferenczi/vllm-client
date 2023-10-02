@@ -6,6 +6,10 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <AssemblyVersion>0.2.0</AssemblyVersion>
+
+        <Version>0.2.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
