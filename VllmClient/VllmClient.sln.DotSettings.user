@@ -7,4 +7,5 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fcb0e3e3_002De410_002D4b43_002D943e_002D9f43a189d996/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Solution Items&amp;gt;\&amp;lt;VllmClientTest&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Dev\AI\vllm-client\VllmClient\VllmClientTest" Presentation="&amp;lt;Solution Items&amp;gt;\&amp;lt;VllmClientTest&amp;gt;" /&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>

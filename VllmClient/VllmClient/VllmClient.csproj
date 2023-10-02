@@ -13,5 +13,9 @@
         <PackageProjectUrl>https://github.com/viktor-ferenczi/vllm-client</PackageProjectUrl>
         <Authors>Viktor Ferenczi</Authors>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
 </Project>
