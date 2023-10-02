@@ -12,14 +12,21 @@
         <Copyright>Apache 2</Copyright>
         <PackageProjectUrl>https://github.com/viktor-ferenczi/vllm-client</PackageProjectUrl>
         <Authors>Viktor Ferenczi</Authors>
-        <PackageIcon>docs\Logo.png</PackageIcon>
         <RepositoryUrl>https://github.com/viktor-ferenczi/vllm-client</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>vllm llm ai</PackageTags>
+        <PackageIcon>Logo.png</PackageIcon>
     </PropertyGroup>
     
     <ItemGroup>
-        <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+        <None Include="Logo.png">
+          <Pack>true</Pack>
+          <PackagePath></PackagePath>
+        </None>
+        <None Include="README.md">
+          <Pack>true</Pack>
+          <PackagePath></PackagePath>
+        </None>
     </ItemGroup>
 
 </Project>

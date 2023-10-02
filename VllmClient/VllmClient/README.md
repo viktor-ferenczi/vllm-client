@@ -17,11 +17,13 @@ var client = new AsyncVllmClient(ApiUrl);
 // See the docstring of the [SamplingParams](https://github.com/vllm-project/vllm/blob/main/vllm/sampling_params.py) Python class 
 var @params = new SamplingParams { Temperature = 0.01f, MaxTokens = 2 };
 
+const string prompt = "Hello! My name is";
+
 // Full generation (list with N items, see SamplingParams)
-IList<string> response = await client.Generate(Prompt, @params);
+IList<string> response = await client.Generate(prompt, @params);
 
 // Streaming generation
-await foreach (var response in client.Stream(Prompt, @params)) {
+await foreach (var response in client.Stream(prompt, @params)) {
     // Response is an IList of N strings
 }
 ```
