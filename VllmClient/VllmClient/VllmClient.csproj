@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyVersion>0.2.0</AssemblyVersion>
+        <Version>0.2.0</Version>
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+        <Title>vLLM Client</Title>
+        <Description>Client for the vLLM engine. </Description>
+        <Copyright>Apache 2</Copyright>
+        <PackageProjectUrl>https://github.com/viktor-ferenczi/vllm-client</PackageProjectUrl>
+        <Authors>Viktor Ferenczi</Authors>
+        <RepositoryUrl>https://github.com/viktor-ferenczi/vllm-client</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>vllm llm ai</PackageTags>
+        <PackageIcon>Logo.png</PackageIcon>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="Logo.png">
+          <Pack>true</Pack>
+          <PackagePath></PackagePath>
+        </None>
+        <None Include="README.md">
+          <Pack>true</Pack>
+          <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>
