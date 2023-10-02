@@ -1,9 +1,8 @@
 namespace VllmClientTest;
 
-public class VllmClientTest
+public class AsyncVllmClientTest
 {
-    // private const string ApiUrl = "http://localhost:8000/generate";
-    private const string ApiUrl = "http://192.168.1.10:8000/generate";
+    private const string ApiUrl = "http://localhost:8000/generate";
     private const string Prompt = "This is an inteview with a biologist. Reporter: How many fingers humans have on one hand? Biologist: ";
 
     private AsyncVllmClient? client;
@@ -51,7 +50,7 @@ public class VllmClientTest
         var parts = new List<string>();
         var received = Prompt.Length;
 
-        var @params = new SamplingParams { Temperature = 0.01f, MaxTokens = 2};
+        var @params = new SamplingParams { Temperature = 0.01f, MaxTokens = 2 };
         await foreach (var response in client.Stream(Prompt, @params))
         {
             Assert.That(response, Has.Count.EqualTo(1));
