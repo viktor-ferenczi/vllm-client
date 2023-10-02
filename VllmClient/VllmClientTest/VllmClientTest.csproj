@@ -10,6 +10,18 @@
         <AssemblyVersion>0.2.0</AssemblyVersion>
 
         <Version>0.2.0</Version>
+
+        <Title>vLLM Client Tests</Title>
+
+        <Description>Client for the vLLM engine.</Description>
+
+        <PackageProjectUrl>https://github.com/viktor-ferenczi/vllm-client</PackageProjectUrl>
+
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+
+        <Authors>Viktor Ferenczi</Authors>
+
+        <Copyright>Apache 2</Copyright>
     </PropertyGroup>
 
     <ItemGroup>

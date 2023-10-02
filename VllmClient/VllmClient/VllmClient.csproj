@@ -6,6 +6,12 @@
         <Nullable>enable</Nullable>
         <AssemblyVersion>0.2.0</AssemblyVersion>
         <Version>0.2.0</Version>
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+        <Title>vLLM Client</Title>
+        <Description>Client for the vLLM engine. </Description>
+        <Copyright>Apache 2</Copyright>
+        <PackageProjectUrl>https://github.com/viktor-ferenczi/vllm-client</PackageProjectUrl>
+        <Authors>Viktor Ferenczi</Authors>
     </PropertyGroup>
 
 </Project>
