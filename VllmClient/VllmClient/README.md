@@ -15,7 +15,7 @@ const string ApiUrl = "http://localhost:8000/generate";
 var client = new AsyncVllmClient(ApiUrl);
 
 // See the docstring of the SamplingParams [*] Python class 
-var @params = new SamplingParams { Temperature = 0.01f, MaxTokens = 2 };
+var @params = new SamplingParams { Temperature = 0.5f, MaxTokens = 2 };
 
 const string prompt = "Hello! My name is";
 
