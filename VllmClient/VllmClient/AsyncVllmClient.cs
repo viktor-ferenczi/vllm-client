@@ -140,6 +140,7 @@ public class AsyncVllmClient : IDisposable
             { "ignore_eos", @params.IgnoreEos },
             { "max_tokens", @params.MaxTokens },
             { "logprobs", @params.Logprobs },
+            { "prompt_logprobs", @params.PromptLogprobs },
             { "skip_special_tokens", @params.SkipSpecialTokens },
         };
 

@@ -26,6 +26,7 @@ public class SamplingParams
     public bool IgnoreEos { get; set; }
     public int MaxTokens { get; set; } = 16;
     public int? Logprobs { get; set; }
+    public int? PromptLogprobs { get; set; }
     public bool SkipSpecialTokens { get; set; } = true;
 
     public SamplingParams()
