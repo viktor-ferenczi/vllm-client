@@ -160,6 +160,5 @@ cython_debug/
 .idea/
 
 # C#
+**/bin
 **/obj
-**/obj/Debug
-**/obj/Release

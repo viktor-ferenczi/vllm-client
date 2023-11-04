@@ -19,6 +19,13 @@ public class AsyncVllmClient : IDisposable
 
     public AsyncVllmClient(string apiUrl)
     {
+        apiUrl = apiUrl.TrimEnd('/');
+
+        if (apiUrl.EndsWith("/generate"))
+        {
+            throw new Exception("Please remove /generate from the end of API URL");
+        }
+
         client = new HttpClient { BaseAddress = new Uri(apiUrl) };
     }
 
@@ -31,7 +38,7 @@ public class AsyncVllmClient : IDisposable
     {
         var payload = FormatRequestData(prompt, false, @params);
 
-        var response = await client.PostAsJsonAsync("", payload, cancellationToken: cancellationToken);
+        var response = await client.PostAsJsonAsync("/generate", payload, cancellationToken: cancellationToken);
         response.EnsureSuccessStatusCode();
 
         var data = await response.Content.ReadFromJsonAsync<Dictionary<string, JsonElement>?>(cancellationToken: cancellationToken);
@@ -57,7 +64,7 @@ public class AsyncVllmClient : IDisposable
     {
         var payload = FormatRequestData(prompt, true, @params);
 
-        var response = await client.PostAsJsonAsync("", payload, cancellationToken: cancellationToken);
+        var response = await client.PostAsJsonAsync("/generate", payload, cancellationToken: cancellationToken);
         var content = await response.Content.ReadAsStreamAsync(cancellationToken);
 
         var buffer = new byte[32768];

@@ -11,7 +11,7 @@ Install `vLLM Client` from NuGet.
 ## Examples
 
 ```csharp
-const string ApiUrl = "http://localhost:8000/generate";
+const string ApiUrl = "http://localhost:8000";
 var client = new AsyncVllmClient(ApiUrl);
 
 // See the docstring of the SamplingParams [*] Python class 

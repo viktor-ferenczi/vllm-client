@@ -7,7 +7,7 @@ from vllm_client.async_client import AsyncVllmClient
 from vllm_client.sampling_params import SamplingParams
 
 # Adjust to match your vLLM server
-API_BASE = 'http://127.0.0.1:8000/generate'
+API_BASE = 'http://127.0.0.1:8000'
 
 # Adjust to match the model running on the vLLM server
 # This one works for Llama-2

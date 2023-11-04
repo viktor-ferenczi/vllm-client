@@ -9,7 +9,12 @@ from vllm_client.sampling_params import SamplingParams
 class AsyncVllmClient:
 
     def __init__(self, url: str):
+        url = url.rstrip('/')
+        if url.endswith('/generate'):
+            raise ValueError('Please remove /generate from the end of API URL')
+
         self.url: str = url
+        self.__generate_url = f'{url}/generate'
 
     async def generate(self, prompt: str, params: SamplingParams) -> List[str]:
         payload = {
@@ -17,7 +22,7 @@ class AsyncVllmClient:
             **params.__dict__
         }
         async with aiohttp.ClientSession() as session:
-            async with session.post(self.url, json=payload) as response:
+            async with session.post(self.__generate_url, json=payload) as response:
                 response.raise_for_status()
                 response = await response.json()
 
@@ -30,7 +35,7 @@ class AsyncVllmClient:
             **params.__dict__
         }
         async with aiohttp.ClientSession() as session:
-            async with session.post(self.url, json=payload) as response:
+            async with session.post(self.__generate_url, json=payload) as response:
                 content = response.content
                 while 1:
                     item = await content.readuntil(b"\0")

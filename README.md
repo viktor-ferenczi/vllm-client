@@ -27,4 +27,4 @@ It should work out of the box with a vLLM API server.
 
 ## Another programming languages
 
-- C# [VllmClient NuGet package](https://www.nuget.org/packages/VllmClient/0.2.0)
+- C# [VllmClient NuGet package](https://www.nuget.org/packages/VllmClient/0.2.1)

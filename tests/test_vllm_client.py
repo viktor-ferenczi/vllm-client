@@ -13,7 +13,7 @@ class VllmClientTest(unittest.IsolatedAsyncioTestCase):
 
     """
 
-    api_base = 'http://127.0.0.1:8000/generate'
+    api_base = 'http://localhost:8000'
 
     prompt_template = '''\
 <s>[INST] <<SYS>>

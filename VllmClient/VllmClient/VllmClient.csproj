@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.2.0</AssemblyVersion>
-        <Version>0.2.0</Version>
+        <AssemblyVersion>0.2.1</AssemblyVersion>
+        <Version>0.2.1</Version>
         <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
         <Title>vLLM Client</Title>
         <Description>Client for the vLLM engine. </Description>
@@ -16,6 +16,7 @@
         <RepositoryType>GitHub</RepositoryType>
         <PackageTags>vllm llm ai</PackageTags>
         <PackageIcon>Logo.png</PackageIcon>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     
     <ItemGroup>
