@@ -1,8 +1,6 @@
 ﻿using System.Text.Json;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Unicode;
 
 namespace VllmClient;
 
@@ -34,9 +32,13 @@ public class AsyncVllmClient : IDisposable
         client.Dispose();
     }
 
-    public async Task<IList<string>> Generate(string prompt, SamplingParams @params, CancellationToken cancellationToken = default)
+    public async Task<IList<string>> Generate(
+        string prompt,
+        SamplingParams @params,
+        CancellationToken cancellationToken = default,
+        Dictionary<string, object>? extraBody = null)
     {
-        var payload = FormatRequestData(prompt, false, @params);
+        var payload = FormatRequestData(prompt, false, @params, extraBody);
 
         var response = await client.PostAsJsonAsync("/generate", payload, cancellationToken: cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -60,9 +62,13 @@ public class AsyncVllmClient : IDisposable
         return texts.EnumerateArray().Select(v => v.GetString() ?? "N/A").ToList();
     }
 
-    public async IAsyncEnumerable<IList<string>> Stream(string prompt, SamplingParams @params, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<IList<string>> Stream(
+        string prompt,
+        SamplingParams @params,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default,
+        Dictionary<string, object>? extraBody = null)
     {
-        var payload = FormatRequestData(prompt, true, @params);
+        var payload = FormatRequestData(prompt, true, @params, extraBody);
 
         var response = await client.PostAsJsonAsync("/generate", payload, cancellationToken: cancellationToken);
         var content = await response.Content.ReadAsStreamAsync(cancellationToken);
@@ -119,7 +125,11 @@ public class AsyncVllmClient : IDisposable
         }
     }
 
-    private static Dictionary<string, object?> FormatRequestData(string prompt, bool stream, SamplingParams @params)
+    private static Dictionary<string, object?> FormatRequestData(
+        string prompt,
+        bool stream,
+        SamplingParams @params,
+        Dictionary<string, object>? extra)
     {
         var payload = new Dictionary<string, object?>()
         {
@@ -147,6 +157,14 @@ public class AsyncVllmClient : IDisposable
             { "skip_special_tokens", @params.SkipSpecialTokens },
             { "spaces_between_special_tokens", @params.SpacesBetweenSpecialTokens },
         };
+
+        if (extra != null)
+        {
+            foreach (var (key, value) in extra)
+            {
+                payload[key] = value;
+            }
+        }
 
         payload["early_stopping"] = @params.EarlyStopping switch
         {

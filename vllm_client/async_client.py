@@ -1,5 +1,5 @@
 from json import loads
-from typing import AsyncIterable, List
+from typing import AsyncIterable, List, Optional, Dict, Any
 
 import aiohttp
 
@@ -16,11 +16,18 @@ class AsyncVllmClient:
         self.url: str = url
         self.__generate_url = f'{url}/generate'
 
-    async def generate(self, prompt: str, params: SamplingParams) -> List[str]:
+    async def generate(self,
+                       prompt: str,
+                       params: SamplingParams,
+                       extra: Optional[Dict[str, Any]] = None) -> List[str]:
         payload = {
             "prompt": prompt,
             **params.__dict__
         }
+
+        if extra is not None:
+            payload.update(extra)
+
         async with aiohttp.ClientSession() as session:
             async with session.post(self.__generate_url, json=payload) as response:
                 response.raise_for_status()
@@ -28,12 +35,19 @@ class AsyncVllmClient:
 
         return response["text"]
 
-    async def stream(self, prompt: str, params: SamplingParams) -> AsyncIterable[List[str]]:
+    async def stream(self,
+                     prompt: str,
+                     params: SamplingParams,
+                     extra: Optional[Dict[str, Any]] = None) -> AsyncIterable[List[str]]:
         payload = {
             "prompt": prompt,
             "stream": True,
             **params.__dict__
         }
+
+        if extra is not None:
+            payload.update(extra)
+
         async with aiohttp.ClientSession() as session:
             async with session.post(self.__generate_url, json=payload) as response:
                 content = response.content
