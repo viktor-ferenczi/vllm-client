@@ -70,7 +70,7 @@ public class AsyncVllmClient : IDisposable
         var buffer = new byte[32768];
         var filled = 0;
 
-        for (;;)
+        for(;;)
         {
             var bytesRead = await content.ReadAsync(buffer.AsMemory(filled), cancellationToken);
             if (bytesRead == 0)
@@ -85,7 +85,7 @@ public class AsyncVllmClient : IDisposable
 
             filled += bytesRead;
 
-            for (;;)
+            for(;;)
             {
                 var zero = Array.FindIndex(buffer, 0, filled, b => b == 0);
                 if (zero < 0)
@@ -129,21 +129,24 @@ public class AsyncVllmClient : IDisposable
             { "best_of", @params.BestOf },
             { "presence_penalty", @params.PresencePenalty },
             { "frequency_penalty", @params.FrequencyPenalty },
+            { "repetition_penalty", @params.RepetitionPenalty },
             { "temperature", @params.Temperature },
             { "top_p", @params.TopP },
             { "top_k", @params.TopK },
+            { "min_p", @params.MinP },
             { "use_beam_search", @params.UseBeamSearch },
             { "length_penalty", @params.LengthPenalty },
             { "early_stopping", @params.EarlyStopping },
             { "stop", @params.Stop == null ? null : @params.Stop.Count == 1 ? @params.Stop[0] : @params.Stop },
             { "stop_token_ids", @params.StopTokenIds },
+            { "include_stop_str_in_output", @params.IncludeStopStrInOutput },
             { "ignore_eos", @params.IgnoreEos },
             { "max_tokens", @params.MaxTokens },
             { "logprobs", @params.Logprobs },
             { "prompt_logprobs", @params.PromptLogprobs },
             { "skip_special_tokens", @params.SkipSpecialTokens },
+            { "spaces_between_special_tokens", @params.SpacesBetweenSpecialTokens },
         };
-
 
         payload["early_stopping"] = @params.EarlyStopping switch
         {

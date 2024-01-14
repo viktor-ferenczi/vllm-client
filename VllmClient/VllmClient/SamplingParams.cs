@@ -2,9 +2,9 @@
 
 public enum EarlyStopping
 {
-    Heuristic, // False
-    BestOf, // True
-    Never // "never"
+    Heuristic,// False
+    BestOf,// True
+    Never// "never"
 }
 
 public class SamplingParams
@@ -15,19 +15,23 @@ public class SamplingParams
     public int? BestOf { get; set; }
     public float PresencePenalty { get; set; } = 0f;
     public float FrequencyPenalty { get; set; } = 0f;
+    public float RepetitionPenalty { get; set; } = 1f;
     public float Temperature { get; set; } = 1f;
     public float TopP { get; set; } = 1f;
     public int TopK { get; set; } = -1;
+    public float MinP { get; set; } = 0f;
     public bool UseBeamSearch { get; set; }
     public float LengthPenalty { get; set; } = 1f;
     public EarlyStopping EarlyStopping { get; set; } = EarlyStopping.Heuristic;
     public IList<string>? Stop { get; set; }
     public IList<int>? StopTokenIds { get; set; }
+    public bool IncludeStopStrInOutput { get; set; }
     public bool IgnoreEos { get; set; }
     public int MaxTokens { get; set; } = 16;
     public int? Logprobs { get; set; }
     public int? PromptLogprobs { get; set; }
     public bool SkipSpecialTokens { get; set; } = true;
+    public bool SpacesBetweenSpecialTokens { get; set; } = true;
 
     public SamplingParams()
     {

@@ -1,8 +1,7 @@
 import unittest
 import asyncio
 
-from vllm_client.sampling_params import SamplingParams
-from vllm_client.async_client import AsyncVllmClient
+from vllm_client import AsyncVllmClient, SamplingParams
 
 
 class VllmClientTest(unittest.IsolatedAsyncioTestCase):
