@@ -38,7 +38,7 @@ class VllmClientTest(unittest.IsolatedAsyncioTestCase):
             print(s[len(self.prompt):])
             print()
             count += 1
-        self.assertEquals(n, count)
+        self.assertEqual(n, count)
 
     async def test_streaming_generation(self):
         received = self.prompt
@@ -58,4 +58,4 @@ class VllmClientTest(unittest.IsolatedAsyncioTestCase):
             print(response[0][len(self.prompt):])
             print()
             count += 1
-        self.assertEquals(n, count)
+        self.assertEqual(n, count)
