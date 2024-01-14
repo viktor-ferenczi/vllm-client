@@ -3,8 +3,7 @@
 """
 import asyncio
 
-from vllm_client.async_client import AsyncVllmClient
-from vllm_client.sampling_params import SamplingParams
+from vllm_client import AsyncVllmClient, SamplingParams
 
 # Adjust to match your vLLM server
 API_BASE = 'http://127.0.0.1:8000'
