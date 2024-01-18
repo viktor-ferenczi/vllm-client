@@ -1,4 +1,5 @@
-from json import loads
+from json import loads, dumps
+from logging import Logger
 from typing import AsyncIterable, List, Optional, Dict, Any
 
 import aiohttp
@@ -8,10 +9,12 @@ from .sampling_params import SamplingParams
 
 class AsyncVllmClient:
 
-    def __init__(self, url: str):
+    def __init__(self, url: str, *, logger: Optional[Logger] = None):
         url = url.rstrip('/')
         if url.endswith('/generate'):
             raise ValueError('Please remove /generate from the end of API URL')
+
+        self.logger: Optional[Logger] = logger
 
         self.url: str = url
         self.__generate_url = f'{url}/generate'
@@ -28,10 +31,18 @@ class AsyncVllmClient:
         if extra is not None:
             payload.update(extra)
 
+        if self.logger is not None:
+            self.logger.debug('vLLM request')
+            self.logger.debug(f'url: {self.__generate_url}')
+            self.logger.debug(f'payload:\n{dumps(payload, indent=2)}')
+
         async with aiohttp.ClientSession() as session:
             async with session.post(self.__generate_url, json=payload) as response:
                 response.raise_for_status()
                 response = await response.json()
+
+        if self.logger is not None:
+            self.logger.debug(f'response:\n{dumps(response, indent=2)}')
 
         return response["text"]
 
