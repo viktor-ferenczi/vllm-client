@@ -40,6 +40,7 @@ class SamplingParams:
         min_p: Float that represents the minimum probability for a token to be
             considered, relative to the probability of the most likely token.
             Must be in [0, 1]. Set to 0 to disable this.
+        seed: Random seed to use for the generation.
         use_beam_search: Whether to use beam search instead of sampling.
         length_penalty: Float that penalizes sequences based on their length.
             Used in beam search.
@@ -83,6 +84,7 @@ class SamplingParams:
             top_p: float = 1.0,
             top_k: int = -1,
             min_p: float = 0.0,
+            seed: Optional[int] = None,
             use_beam_search: bool = False,
             length_penalty: float = 1.0,
             early_stopping: Union[bool, str] = False,
@@ -90,7 +92,7 @@ class SamplingParams:
             stop_token_ids: Optional[List[int]] = None,
             include_stop_str_in_output: bool = False,
             ignore_eos: bool = False,
-            max_tokens: int = 16,
+            max_tokens: Optional[int] = 16,
             logprobs: Optional[int] = None,
             prompt_logprobs: Optional[int] = None,
             skip_special_tokens: bool = True,
@@ -105,6 +107,7 @@ class SamplingParams:
         self.top_p = top_p
         self.top_k = top_k
         self.min_p = min_p
+        self.seed = seed
         self.use_beam_search = use_beam_search
         self.length_penalty = length_penalty
         self.early_stopping = early_stopping
@@ -163,7 +166,7 @@ class SamplingParams:
         if not 0.0 <= self.min_p <= 1.0:
             raise ValueError("min_p must be in [0, 1], got "
                              f"{self.min_p}.")
-        if self.max_tokens < 1:
+        if self.max_tokens is not None and self.max_tokens < 1:
             raise ValueError(
                 f"max_tokens must be at least 1, got {self.max_tokens}.")
         if self.logprobs is not None and self.logprobs < 0:
@@ -218,6 +221,7 @@ class SamplingParams:
             f"top_p={self.top_p}, "
             f"top_k={self.top_k}, "
             f"min_p={self.min_p}, "
+            f"seed={self.seed}, "
             f"use_beam_search={self.use_beam_search}, "
             f"length_penalty={self.length_penalty}, "
             f"early_stopping={self.early_stopping}, "

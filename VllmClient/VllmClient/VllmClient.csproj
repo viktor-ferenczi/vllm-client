@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyVersion>0.2.7.2</AssemblyVersion>
-        <Version>0.2.7.2</Version>
+        <AssemblyVersion>0.3.2.0</AssemblyVersion>
+        <Version>0.3.2.0</Version>
         <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
         <Title>vLLM Client</Title>
         <Description>Client for the vLLM engine. </Description>
