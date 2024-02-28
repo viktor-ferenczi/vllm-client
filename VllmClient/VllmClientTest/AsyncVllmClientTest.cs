@@ -2,7 +2,7 @@ namespace VllmClientTest;
 
 public class AsyncVllmClientTest
 {
-    private const string ApiUrl = "http://localhost:8000";
+    private string ApiUrl => Environment.GetEnvironmentVariable("VLLM_BASE_URL") ?? "http://localhost:8000";
     private const string Prompt = "This is an inteview with a biologist. Reporter: How many fingers humans have on one hand? Biologist: ";
 
     private AsyncVllmClient? client;

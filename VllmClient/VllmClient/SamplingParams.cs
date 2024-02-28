@@ -20,6 +20,7 @@ public class SamplingParams
     public float TopP { get; set; } = 1f;
     public int TopK { get; set; } = -1;
     public float MinP { get; set; } = 0f;
+    public int? Seed { get; set; }
     public bool UseBeamSearch { get; set; }
     public float LengthPenalty { get; set; } = 1f;
     public EarlyStopping EarlyStopping { get; set; } = EarlyStopping.Heuristic;
@@ -27,7 +28,7 @@ public class SamplingParams
     public IList<int>? StopTokenIds { get; set; }
     public bool IncludeStopStrInOutput { get; set; }
     public bool IgnoreEos { get; set; }
-    public int MaxTokens { get; set; } = 16;
+    public int? MaxTokens { get; set; } = 16;
     public int? Logprobs { get; set; }
     public int? PromptLogprobs { get; set; }
     public bool SkipSpecialTokens { get; set; } = true;

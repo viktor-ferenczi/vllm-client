@@ -24,7 +24,12 @@ public class AsyncVllmClient : IDisposable
             throw new Exception("Please remove /generate from the end of API URL");
         }
 
-        client = new HttpClient { BaseAddress = new Uri(apiUrl) };
+        client = new HttpClient {BaseAddress = new Uri(apiUrl)};
+    }
+
+    public AsyncVllmClient(HttpClient httpClient)
+    {
+        client = httpClient;
     }
 
     public void Dispose()
@@ -133,29 +138,30 @@ public class AsyncVllmClient : IDisposable
     {
         var payload = new Dictionary<string, object?>()
         {
-            { "prompt", prompt },
-            { "stream", stream },
-            { "n", @params.N },
-            { "best_of", @params.BestOf },
-            { "presence_penalty", @params.PresencePenalty },
-            { "frequency_penalty", @params.FrequencyPenalty },
-            { "repetition_penalty", @params.RepetitionPenalty },
-            { "temperature", @params.Temperature },
-            { "top_p", @params.TopP },
-            { "top_k", @params.TopK },
-            { "min_p", @params.MinP },
-            { "use_beam_search", @params.UseBeamSearch },
-            { "length_penalty", @params.LengthPenalty },
-            { "early_stopping", @params.EarlyStopping },
-            { "stop", @params.Stop == null ? null : @params.Stop.Count == 1 ? @params.Stop[0] : @params.Stop },
-            { "stop_token_ids", @params.StopTokenIds },
-            { "include_stop_str_in_output", @params.IncludeStopStrInOutput },
-            { "ignore_eos", @params.IgnoreEos },
-            { "max_tokens", @params.MaxTokens },
-            { "logprobs", @params.Logprobs },
-            { "prompt_logprobs", @params.PromptLogprobs },
-            { "skip_special_tokens", @params.SkipSpecialTokens },
-            { "spaces_between_special_tokens", @params.SpacesBetweenSpecialTokens },
+            {"prompt", prompt},
+            {"stream", stream},
+            {"n", @params.N},
+            {"best_of", @params.BestOf},
+            {"presence_penalty", @params.PresencePenalty},
+            {"frequency_penalty", @params.FrequencyPenalty},
+            {"repetition_penalty", @params.RepetitionPenalty},
+            {"temperature", @params.Temperature},
+            {"top_p", @params.TopP},
+            {"top_k", @params.TopK},
+            {"min_p", @params.MinP},
+            {"seed", @params.Seed},
+            {"use_beam_search", @params.UseBeamSearch},
+            {"length_penalty", @params.LengthPenalty},
+            {"early_stopping", @params.EarlyStopping},
+            {"stop", @params.Stop == null ? null : @params.Stop.Count == 1 ? @params.Stop[0] : @params.Stop},
+            {"stop_token_ids", @params.StopTokenIds},
+            {"include_stop_str_in_output", @params.IncludeStopStrInOutput},
+            {"ignore_eos", @params.IgnoreEos},
+            {"max_tokens", @params.MaxTokens},
+            {"logprobs", @params.Logprobs},
+            {"prompt_logprobs", @params.PromptLogprobs},
+            {"skip_special_tokens", @params.SkipSpecialTokens},
+            {"spaces_between_special_tokens", @params.SpacesBetweenSpecialTokens},
         };
 
         if (extra != null)
